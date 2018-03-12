@@ -16,10 +16,13 @@ body, html {
     display: none;
 }
 
+#mh-text-body{
+	padding-bottom: 50px;
+}
+
 #mh-footer{
 	padding-top: 20px !important;
 	padding-bottom: 20px !important;
-	margin-top: 50px !important;
 	transition: .2s;
 }
 
