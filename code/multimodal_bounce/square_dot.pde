@@ -32,6 +32,6 @@ class square_dot
     }
     fill(255); // draw a dot
     noStroke();
-    ellipse(x, y, dotsize, dotsize);
+    rect(x, y, dotsize, dotsize);
   }
 }

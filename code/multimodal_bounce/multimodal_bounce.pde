@@ -30,9 +30,10 @@ import g4p_controls.*;
 // audio 
 Minim minim; // handle to a sound object
 AudioPlayer click_sound;
+String audio_files [] = {"click.aiff", "wind.wav"};
 
 // definitions
-dot d1, d2; // two dot handles from the dot class
+square_dot d1, d2; // two dots from own dot class
 static int dotsize = 20; // size of dot in pixels
 int speed = 5; // inital speed value
 int latency_value = 1; // initial latency value
@@ -49,13 +50,13 @@ void setup()
   createGUI(); // call to the G4P library to create the sliders, etc.
   
   // instantiate dots
-  d1 = new dot(); 
+  d1 = new square_dot(); 
     d1.init(1);
-  d2 = new dot();
+  d2 = new square_dot();
     d2.init(-1); 
   
   minim = new Minim(this); // audio handler 
-  click_sound = minim.loadFile("click.aiff"); // read in a sound file
+  click_sound = minim.loadFile(audio_files[0]); // read in a sound file
   
   f = createFont("ArialMT-48.vlw", 12); // get a font
   textFont(f);  
@@ -74,7 +75,7 @@ void draw()
   // check if dots coinciding
   if(d1.turned == true) 
   {
-    if((abs(d1.x - d2.x) <= (dotsize/2)*latency_value )) // moment of visual coincidence
+    if((abs(d1.x - d2.x) <= (dotsize)*latency_value )) // moment when dots hit
     { 
       round++;
       d1.turned = false;
@@ -97,7 +98,7 @@ void showlabels()
   textAlign(LEFT);
   text("SPEED", 300, 515); 
   text("LATENCY", 300, 575);  
-  text(speed, 700, 515); 
+  text((int) speed, 700, 515); 
   text(latency_value, 700, 575);
   text("SOUND ON", 800, 575);
 }  
