@@ -24,53 +24,65 @@
 /////////////////////////////////////////////////////////////////////////////
 
 // libraries
-import processing.sound.*; // the java sound library works ok on OSX. If you're using 
-                           // Windows, you may have to use the minim library instead.
+import ddf.minim.*;
 import g4p_controls.*;
 
-SoundFile clicksound; // handle to a sound object
+// audio 
+Minim minim; // handle to a sound object
+AudioPlayer click_sound;
 
 // definitions
 dot d1, d2; // two dot handles from the dot class
 static int dotsize = 20; // size of dot in pixels
 int speed = 5; // inital speed value
 int latency_value = 1; // initial latency value
-PFont f; // handle to a font object
+PFont f; // handler for font object
 boolean soundonoff = true;
-PrintWriter output; // handle to a file i/o object
+PrintWriter output; // handler for file i/o object
 int round = 0; // number of times the dots have crossed screen
 
 void setup()
 {
-  size(1000,800); // size of the window
+  size(1000,600); // size of the window
   background(0); // black background
   frameRate(100); // 100 frames/second = 0.01s/frame
   createGUI(); // call to the G4P library to create the sliders, etc.
-  d1 = new dot(); // instantiate dots
+  
+  // instantiate dots
+  d1 = new dot(); 
+    d1.init(1);
   d2 = new dot();
-  d1.init(1); // initialise dots
-  d2.init(-1); 
-  clicksound = new SoundFile(this, "click.aiff"); // read in a sound file
+    d2.init(-1); 
+  
+  minim = new Minim(this); // audio handler 
+  click_sound = minim.loadFile("click.aiff"); // read in a sound file
+  
   f = createFont("ArialMT-48.vlw", 12); // get a font
   textFont(f);  
   output = createWriter("results.csv"); // create an output file
-  output.println("Round, Bounce, Speed, Latency");
+  output.println("Round, Bounce, Speed, Latency"); // print labels in the output file
 }
 
 void draw()
-{
+{ 
   background(0); // clear screen to black
-  d1.animate(speed); // animate dots
+  
+  // animate dots
+  d1.animate(speed);
   d2.animate(speed);
-  if(d1.turned == true) // check if dots coinciding
+  
+  // check if dots coinciding
+  if(d1.turned == true) 
   {
-    if((abs(d1.x - d2.x) <= 10*latency_value ))
+    if((abs(d1.x - d2.x) <= (dotsize/2)*latency_value )) // moment of visual coincidence
     { 
       round++;
       d1.turned = false;
       if(soundonoff == true)
       {
-        clicksound.play();
+        click_sound.play();
+        click_sound.rewind();
+        //print("sound!\n");
       }
     }
   }
@@ -83,11 +95,11 @@ void showlabels()
 { // show labels in screen
   fill(255);
   textAlign(LEFT);
-  text("SPEED", 300, 715); 
-  text("LATENCY", 300, 775);  
-  text(speed, 700, 715); 
-  text(latency_value, 700, 775);
-  text("SOUND ON", 800, 775);
+  text("SPEED", 300, 515); 
+  text("LATENCY", 300, 575);  
+  text(speed, 700, 515); 
+  text(latency_value, 700, 575);
+  text("SOUND ON", 800, 575);
 }  
 
 // callbacks
