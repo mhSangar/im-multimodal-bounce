@@ -13,10 +13,10 @@ In the article is explained how despite the ambiguous nature of the visual stimu
 
 Using this last factor, Watanabe et al. prove that:
 
-	1. The bounce-inducing effect is reduced when the simultaneous sound is preceded and followed by other identical sounds.
-	2. The attenuation of the bounce-inducing effect depends on auditory context and the saliency of the simultaneous sound.
-	3. The auditory context does not alter perceptual properties of the simultaneous sound itself.
+1. The bounce-inducing effect is reduced when the simultaneous sound is preceded and followed by other identical sounds.
+2. The attenuation of the bounce-inducing effect depends on auditory context and the saliency of the simultaneous sound.
+3. The auditory context does not alter perceptual properties of the simultaneous sound itself.
 
 ### References
-	* Watanabe, K. and Shimojo, S. (2001). When Sound Affects Vision: Effects of Auditory Grouping on Visual Motion Perception. Psychological Science, 12(2), pp.109-116.
+* Watanabe, K. and Shimojo, S. (2001). When Sound Affects Vision: Effects of Auditory Grouping on Visual Motion Perception. Psychological Science, 12(2), pp.109-116.
 
