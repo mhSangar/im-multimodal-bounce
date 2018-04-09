@@ -34,4 +34,10 @@ class dot
     noStroke();
     ellipse(x, y, dotsize, dotsize);
   }
+  
+  void stay(){
+    fill(255); // draw a dot
+    noStroke();
+    ellipse(x, y, dotsize, dotsize);
+  }
 }

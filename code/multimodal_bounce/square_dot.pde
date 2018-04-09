@@ -34,4 +34,11 @@ class square_dot
     noStroke();
     rect(x, y, dotsize, dotsize);
   }
+  
+  void stay()
+  {
+    fill(255); // draw a dot
+    noStroke();
+    rect(x, y, dotsize, dotsize);
+  }
 }
