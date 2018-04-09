@@ -7,7 +7,6 @@
 
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script> 
   <script src="script/load_top_bar.js"></script>
-  <script src="script/index.js"></script>
 	
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
@@ -17,7 +16,6 @@
 	
 	<!-- CSS style file -->
 	<link rel="stylesheet" href="style/main.css">
-  <link rel="stylesheet" href="style/index.css">
 
 </head>
 <body class="mh-min-width">
@@ -38,69 +36,19 @@
   </div>
 </header>
 
-<div class="mh-container mh-img">
-
-    <li>
-      <a href="files/test.zip" onmouseover="underlineText(0)" onmouseout="notUnderlineText(0)" download><img id="top-image" alt="Zip file" src="imgs/pde-icon.png"></a>
-      <br>
-      <a href="files/test.zip" download><span id="mh-source-text">SOURCE CODE</span></a>
-    </li>
-  
-    <li>
-      <a href="files/test.zip" onmouseover="underlineText(1)" onmouseout="notUnderlineText(1)" download><img id="top-image" alt="Zip file" src="imgs/zip-icon.png"></a>
-      <br>
-      <a href="files/test.zip" download><span id="mh-all-text">ALL FILES</span></a>
-    </li>
-
-    <li>
-      <a href="files/test.zip" onmouseover="underlineText(2)" onmouseout="notUnderlineText(2)" download><img id="top-image" alt="Zip file" src="imgs/pdf-icon.png"></a>
-      <br>
-      <a href="files/test.zip" download><span id="mh-pdf-text">REPORT IN PDF</span></a>
-    </li>  
-  
-</div>
 
 <!-- Add a background color and large text to the whole page -->
 <div id="mh-text-body" class="w3-sand w3-grayscale w3-large">
 
 <!-- About Container -->
-<div class="w3-container">
+<div class="w3-container" id="sum">
   <div class="w3-content mh-text-block">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">HOME</span></h5>
-    <p>Hello, I'm Mario Sánchez García, an Erasmus student originally from Spain. I'm a fourth year student who came from the University Carlos III of Madrid, where I completed my first years in the Computer Science degree. </p>
-    
-    <p>This website is my submission for the Multimodal Bounce assignment within the Interactive Multimedia module (CS4358). The objective of this assignment is to replicate the experiments from <a href="files/Watanabe2001.pdf" target="_blank">Watanabe's paper</a> (Watanabe et al. (2001)) in order to document how including an own new factor could affect the results, and how is this factor related to the cross-modal perception.</p>
-
-    <p>We call a perception cross-modal when it involves the interaction between two or more different sensory modalities, such as sound and light. In Watanabe et al. (2001), the experiments are based in introduce a visual ambiguity, which solution is influenced by audiovisual interaction. A two-dimensional display is presented to the observers, where two visually identical targets are moving across each other so they can be perceived either to bounce off or to stream through each other. </p>
-
-    <img id="experiment-img" src="files/experiment_display_w2001.png">
-      <span id="experiment-img-caption" class="w3-medium">Configuration of the two-dimensional display (Watanabe et al. (2001))</span>
-    </img>
-
-    <p>In the article is explained how despite the ambiguous nature of the visual stimulus, observers usually show a strong bias to see how the targets stream through each other. However, various factors have been reported to increase the relative frequency to percept how the targets bounce. The most remarkable one is to play a brief sound in the moment the targets coincide in the same point (simultaneous sound), suggesting that cross-modal perception is involved.</p>
-
-    <p>Using this last factor, Watanabe et al. prove that:</p>
-    <ol>
-      <li> The bounce-inducing effect is reduced when the simultaneous sound is preceded and followed by other identical sounds. </li>
-      <li> The attenuation of the bounce-inducing effect depends on auditory context and the saliency of the simultaneous sound. </li>
-      <li> The auditory context does not alter perceptual properties of the simultaneous sound itself. </li>
-    </ol>
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">4. SUMMARY</span></h5>
+    <p>The Cafe was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>In addition to our full espresso and brew bar menu, we serve fresh made-to-order breakfast and lunch sandwiches, as well as a selection of sides and salads and other good stuff.</p>
     
   </div>
 </div>
-
-<div class="w3-container">
-  <div class="w3-content mh-text-block">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">REFERENCES</span></h5>
-    <ul style="list-style: initial;">
-      <li style="list-style: initial;">Watanabe, K. and Shimojo, S. (2001). When Sound Affects Vision: Effects of Auditory Grouping on Visual Motion Perception. Psychological Science, 12(2), pp.109-116. Read it <a href="files/Watanabe2001.pdf" target="_blank">here</a>.</li>
-    </ul>
-
-    
-  </div>
-</div>
-
-
 
     <!-- cites -->
     <!--
@@ -178,6 +126,8 @@
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
 
+
+<script src="script/index.js"></script>
 <!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp

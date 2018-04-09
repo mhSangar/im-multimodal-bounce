@@ -1,0 +1,136 @@
+body, html {
+    height: 100%;
+    font-family: "Inconsolata", sans-serif;
+    overflow-x: unset;
+}
+
+.bgimg {
+    background-position: center;
+    background-size: cover;
+    background-image: url("../imgs/main-image.jpg");
+    height: 75%;
+    min-height: 400px;
+}
+
+.menu {
+    display: none;
+}
+
+#mh-text-body{
+	padding-bottom: 100px;
+	text-align: justify;
+}
+
+#mh-footer{
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+	transition: .2s;
+}
+
+.mh-pointer{
+	cursor: pointer;
+}
+
+.mh-container{
+	padding: 50px 0 10px 0;
+	text-align: center;
+	background-color: #f7f5f1 !important;
+	overflow: hidden;
+}
+
+.mh-container li{
+	list-style: none;
+	position: relative;
+	float: left;	
+}
+
+#top-image{
+	width: 80%;
+	max-width: 180px;
+	min-width: 100px; 
+	margin: auto;
+	margin-bottom: 10px;
+	border-radius: 50%;
+	filter:grayscale(30%);
+}
+
+#top-image:hover{
+	filter:grayscale(0%);
+	transition: .05s;
+	transform: scale(.95);
+}
+
+#mh-source-text, #mh-all-text, #mh-pdf-text{
+	font-weight: bold;
+}
+
+.mh-img {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding-left: 13%;
+	padding-right: 13%;
+}
+
+.mh-img a{
+	margin: 8px;
+	text-decoration: none;
+}
+
+.mh-img a:hover{
+	transition: .1s;
+	text-decoration: underline;
+}
+
+.mh-button{
+	transition: .2s;
+
+}
+
+.mh-min-width{
+	min-width: 700px !important;
+	overflow: auto;
+}
+
+.mh-min-width ul{
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+.mh-text-block{
+	max-width: 1200px;
+	width: 75%;
+}
+
+.mh-menu-level-1 {
+	width: 33.3333%;
+	position: relative;
+	float: left;
+}
+
+.mh-menu-level-1 li, .mh-menu-level-1 ul {
+	display: none;
+}
+
+.mh-menu-level-1 ul {
+	margin: 8px 16px;
+}
+
+.mh-menu-level-1:hover li, .mh-menu-level-1:hover ul{
+	display: block;
+}
+
+.mh-menu-level-1:hover a{
+	background: white;
+}
+
+.mh-menu-level-2{
+	position: relative;
+	margin: 0px 16px;
+}
+
+.mh-menu-level-1:hover .mh-button, .mh-menu-level-2 .mh-button:hover{
+	background-color: #ccc !important;
+	color: black !important;
+}

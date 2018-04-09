@@ -13,15 +13,37 @@ function openMenu(evt, menuName) {
   evt.currentTarget.firstElementChild.className += " w3-dark-grey";
 }
 
-function underlineText (){
-  document.getElementById("mh-img-text").style.textDecoration = "underline";
+function underlineText (id){
+  switch(id){
+    case 0:
+      $("#mh-source-text").css("text-decoration", "underline");
+      break;
+    case 1:
+      $("#mh-all-text").css("text-decoration", "underline");
+      break;
+    case 2:
+      $("#mh-pdf-text").css("text-decoration", "underline");
+      break;
+  }
+
 }
 
-function notUnderlineText (){
-  document.getElementById("mh-img-text").style.textDecoration = "";
+function notUnderlineText (id){
+  switch(id){
+    case 0:
+      $("#mh-source-text").css("text-decoration", "none");
+      break;
+    case 1:
+      $("#mh-all-text").css("text-decoration", "none");
+      break;
+    case 2:
+      $("#mh-pdf-text").css("text-decoration", "none");
+      break;
+  }
+  
 }
 
-document.getElementById("myLink").click();
+//document.getElementById("myLink").click();
 
 /*
 
