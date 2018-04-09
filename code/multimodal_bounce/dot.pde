@@ -20,12 +20,12 @@ class dot
   {
     speed = s;
     x += direction * speed;
-    if(x > (width+dotsize))
+    if(x > (width-dotsize))
     {
       direction = -1*direction; // change direction
       turned = true;
     }
-    if(x<(-dotsize))
+    if(x<(dotsize))
     {
       direction = -1*direction; // change direction
       turned = true;
