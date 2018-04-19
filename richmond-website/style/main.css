@@ -4,6 +4,15 @@ body, html {
     overflow-x: unset;
 }
 
+.mh-caption {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 40px;
+}
+
 .bgimg {
     background-position: center;
     background-size: cover;

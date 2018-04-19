@@ -1,0 +1,35 @@
+MODEL
+Toshiba C50-A-1GU
+
+PROCESSOR
+Intel Processor Core i3-4000M (2,40 GHz, FSB 1600 MHz, 3 MB L3) and Intel chipset.
+
+MEMORY
+2x4GB RAM DDR3 1600 MHz, expanded to 8GB.
+
+SCREEN
+Panoramic screen (16:9) Toshiba TruBrite TFT with LED technology of 15,6" HD (39,6 cm), 1.366 x 768, 200 NITs.
+
+HARD DRIVE
+500GB Serial ATA. (5.400 rpm), 250GB SSD.
+
+GRAPHIC CARD
+nVidia GeForce 710M.
+
+KEYBOARD
+Plain keyboard mosaic style with an independent numeric keyboard.
+
+MOUSE
+Integrated Multi Touch Pad (7,9 x 3,9 cm)
+
+COMMUNICATION
+Fast Ethernet 10/100 Mbit, Wireless LAN 802.11 b/g/n, Bluetooth 4.0.
+
+SOUND
+DTS Sound System y and integrated stereo speaker system.
+
+SOFTWARE
+Kubuntu 17.10, Linux kernel version 4.13.0-38-generic.
+
+SIZE AND WEIGHT
+381 x 242 x 29.3 (front) / 33.3 (back) mm, 2.38 Kg.

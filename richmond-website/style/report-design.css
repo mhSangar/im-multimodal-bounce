@@ -1,0 +1,27 @@
+#mockup-img {
+	filter:grayscale(0%);
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	width: 70%;
+	max-width: 800px;
+	min-width: 450px;
+}
+
+#final-gui-design {
+	filter:grayscale(0%);
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	width: 69%;
+	max-width: 800px;
+	min-width: 450px;
+}
+
+.bg-color{
+	background-color: #f7f5f1 !important;
+}

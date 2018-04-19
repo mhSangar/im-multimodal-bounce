@@ -28,7 +28,7 @@ class dot
     if(x<(dotsize))
     {
       direction = -1*direction; // change direction
-      turned = true;
+      turned = true;  
     }
     fill(255); // draw a dot
     noStroke();

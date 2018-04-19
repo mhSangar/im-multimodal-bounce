@@ -1,8 +1,10 @@
 // bounce experiment
-// version: 0.1
-// Mikael Fernström
-// 2018-02-12
-// Version: 02
+//----------------------------------------------
+// Original code:           Mikael Fernström
+// Author of this version:  Mario Sánchez García
+// Date:                    2018-04-16
+// Version:                 03
+//----------------------------------------------
 
 /////////////////////////////////////////////////////////////////////////////
 // GENERAL DESCRIPTION
@@ -23,6 +25,9 @@
 // calculate the actual timings and include that in your analysis.
 /////////////////////////////////////////////////////////////////////////////
 
+// PARAMS
+String observer = "x";
+
 // libraries
 import ddf.minim.*;
 import g4p_controls.*;
@@ -37,18 +42,22 @@ String audio_files [] = {"click.aiff", "wind.wav"};
 dot d1, d2; // two dots from own dot class
 static int dotsize = 20; // size of dot in pixels
 int speed = 5; // inital speed value
-int latency_value = 1; // initial latency value
+int latency_value = 0; // initial latency value
+int audio_file_index = 0;  // initial sound
 PFont f; // handler for font object
 boolean soundonoff = true;
-PrintWriter output; // handler for file i/o object
+Table table;
 int round = 0; // number of times the dots have crossed screen
 int prev_round = -1;
 ControlP5 cp5; // handler of cp5 sliders and button
 Textlabel sound_label;
 Textlabel[] labels = new Textlabel[3];
 boolean stop_animation = false; // stop or stop the animation
-boolean bounce;
-boolean pass;
+boolean bounce;  // bounce detected
+boolean pass;    // pass/stream detected
+boolean sound_played = true;
+int sound_prev = 0;  // sound on the prev round
+int time_ = 0; 
 
 boolean[] mouseover_ctrller = {false, false, false, false};
 // images of the toggle button 
@@ -67,7 +76,9 @@ void setup()
   
   // cp5
     // sliders
+    
     cp5 = new ControlP5(this);
+    /*  SPEED
     cp5.addSlider("speed")
        .setPosition(200,500)
        .setSize(600, 20)
@@ -76,13 +87,14 @@ void setup()
        .setNumberOfTickMarks(15)
        //.getCaptionLabel().setVisible(false)
        ;
+    */
        
     cp5.addSlider("latency_value")
-       .setPosition(200,540)
+       .setPosition(200,510)
        .setSize(600, 20)
-       .setRange(1, 30) // values can range from big to small as well
-       .setValue(1)
-       .setNumberOfTickMarks(30)
+       .setRange(-200, 200) // values can range from big to small as well
+       .setValue(0)
+       .setNumberOfTickMarks(3)
        //.getCaptionLabel().setVisible(false)
        ;
      
@@ -103,7 +115,6 @@ void setup()
     cp5.addButton("bounce")
        .setPosition(220,440)
        .setSize(50,50)
-       //.setImages(bt_images_offhover[2])
        .setImages(loadImage("left-arrow_offhover.png"), loadImage("left-arrow_onhover.png"), loadImage("left-arrow_onhover.png"))
        ;
     labels[1] = new Textlabel (cp5, "BOUNCE DETECTED", 275, 462);
@@ -114,8 +125,16 @@ void setup()
        .setImages(bt_images_offhover[3])
        ;
     labels[2] = new Textlabel (cp5, "PASS DETECTED", 645, 462);
-  
-  
+    
+    cp5.addRadioButton("radio_button")
+      .setPosition(350,550)
+      .setSize(25, 25)
+      .setItemsPerRow(2)
+      .setSpacingColumn(230)
+      .addItem("Original sound", 0)
+      .addItem("Whoosh sound", 1)
+      .activate(0);
+
   // instantiate dots
   d1 = new dot(); 
     d1.init(1);
@@ -123,12 +142,18 @@ void setup()
     d2.init(-1); 
   
   minim = new Minim(this); // audio handler 
-  click_sound = minim.loadFile(audio_files[1]); // read in a sound file
+  click_sound = minim.loadFile(audio_files[audio_file_index]); // read in a sound file
   
   f = createFont("ArialMT-48.vlw", 12); // get a font
   textFont(f);  
-  output = createWriter("results.csv"); // create an output file
-  output.println("Round, Bounce, Speed, Latency"); // print labels in the output file
+
+  table = new Table();
+  table.addColumn("Round");
+  table.addColumn("Bounce");
+  table.addColumn("Audio File");
+  table.addColumn("Latency");
+  
+  time_ = millis();
 }
 
 void draw()
@@ -138,12 +163,17 @@ void draw()
   for (int i = 0; i < labels.length; i++)
     labels[i].draw(this);
   
+  if (sound_prev != audio_file_index){
+    click_sound = minim.loadFile(audio_files[audio_file_index]); // read in a sound file
+    sound_prev = audio_file_index;
+  }
   
   // animate dots
   if (!stop_animation){
     d1.animate(speed);
     d2.animate(speed);
     
+    // get feedback from user
     int bounce_detected = 0;
     if (bounce)
       bounce_detected = 1;
@@ -154,50 +184,92 @@ void draw()
       println("both keys pressed");
     else if (bounce || pass){
       if (round > prev_round){
-        println("b: " + bounce + ", p: " + pass);
+        println("bounce: " + bounce + ", pass: " + pass);
         prev_round = round;
-        output.println(round + "," + bounce_detected + "," + speed + "," + latency_value);
+        
+        TableRow newRow = table.addRow();
+        newRow.setInt("Round", round);
+        newRow.setInt("Bounce", bounce_detected);
+        newRow.setInt("Audio File", audio_file_index);
+        newRow.setInt("Latency", latency_value);
       }
       bounce = false;
       pass = false;
     }   
       
-    // check if dots coinciding
-    if(d1.turned == true) 
-    {
-      if((abs(d1.x - d2.x) <= (dotsize)*latency_value )) // moment when dots hit
-      { 
-        round++;
-        d1.turned = false;
+    // when dots hit each other
+    if( abs(d1.x - d2.x) <= dotsize && d1.turned){  
+      d1.turned = false;
+      round++;
+      //println(round + ": " + (millis() - time_) );  //round time ~1940ms
+      time_ = millis();
+    }
+    
+    // when dots hit the border of the window (offset because variable speed)
+    if (d1.x < dotsize + 20 || d1.x > width-dotsize-20)
+      sound_played = false;
+
+    // play sound
+    if (!sound_played){
+      // Before (-200ms)
+      if (abs(d1.x - d2.x) <= 230 && d1.turned && latency_value < 0){
         if(soundonoff == true)
         {
           click_sound.play();
           click_sound.rewind();
-          //print("sound!\n");
+          sound_played = true;
+          print("sound: |  prev | expected: -200(+/-5)ms | real: " + (millis() - time_ - 1940) + "ms |\n");
+          
+        }
+      }
+      // After (+200ms)
+      else if (abs(d1.x - d2.x) <= 175 && abs(d1.x - d2.x) > 175-(speed+1)  && !d1.turned && latency_value > 0){
+        if(soundonoff == true)
+        {
+          click_sound.play();
+          click_sound.rewind();
+          sound_played = true;
+          print("sound: | after | expected:  200(+/-5)ms | real:  " + (millis() - time_) + "ms |\n");
+          //stop_animation = true;
+        }
+      }
+      // When they collide (0ms)
+      else if (abs(d1.x - d2.x) <= dotsize && latency_value == 0){
+        if(soundonoff == true)
+        {
+          click_sound.play();
+          click_sound.rewind();
+          sound_played = true;
+          print("sound: |   now | expected:    0(+/-5)ms | real:    " + (millis() - time_) + "ms |\n");
+          
         }
       }
     }
+    
   }
+  // animate dots when animation is stopped
   else{
     d1.stay();
     d2.stay();  
   }
-  //showlabels(); // show settings on screen
   
-  hover_toggle_buttons(); // mouseover toggle sound 
+  hover_toggle_buttons(); // update hover animations
   
 }
 
 /////////////////////////////////////////////////////////////////////////////
 // functions
 void hover_toggle_buttons(){
+  // widgets with hover
   String ctrlls [] = {"soundonoff", "stop_animation", "bounce", "pass"};
   
   for (int i = 0; i < ctrlls.length; i++){
+    // if mouse over widget
     if (cp5.isMouseOver(cp5.getController(ctrlls[i]))){
       cp5.getController(ctrlls[i]).setImages(bt_images_onhover[i]);
       mouseover_ctrller[i] = true;
     }
+    // if mouse out widget
     else{
       if (mouseover_ctrller[i]){
         mouseover_ctrller[i] = false;
@@ -207,6 +279,7 @@ void hover_toggle_buttons(){
   }
 }
 
+// load images for icons
 void load_images(){
   bt_images_offhover[0] = new PImage [2];
   bt_images_onhover[0] = new PImage [2];
@@ -244,42 +317,56 @@ void load_images(){
 // callbacks
 void keyPressed() 
 {
-  int bounceDetect = 0;
+  int bounce_detected = -1;
   if(key == CODED){
     if (keyCode == LEFT){
-      bounceDetect = 1;
+      bounce_detected = 1;
       cp5.getController("bounce").setImages(bt_images_onhover[2]);
-    }
-      
-    if (keyCode == RIGHT){
-      bounceDetect = 0;
+      println("bounce: true, pass: false");
+    }      
+    else if (keyCode == RIGHT){
+      bounce_detected = 0;
       cp5.getController("pass").setImages(bt_images_onhover[3]);
+      println("bounce: false, pass: true");
     }
       
   }
   
-  // write fata to file
-  output.println(round + "," + bounceDetect + "," + speed + "," + latency_value);
-
+  if (bounce_detected != -1){
+    // write fata to file
+    TableRow newRow = table.addRow();
+    newRow.setInt("Round", round);
+    newRow.setInt("Bounce", bounce_detected);
+    newRow.setInt("Audio File", audio_file_index);
+    newRow.setInt("Latency", latency_value);
+  }
+   
   if(key == 'q')
   { // save and quit
-    output.flush(); // Write the remaining data
-    output.close(); // Finish the file
+    saveTable(table, "results/observer_" + observer + "_results.csv");
     exit(); // Stop the program
   }
 }
 
+// update keyboard icons  
 void keyReleased(){
-  
   if(key == CODED){
-    if (keyCode == LEFT){
-      cp5.getController("bounce").setImages(bt_images_offhover[2]);
-    }
-      
-    if (keyCode == RIGHT){
+    if (keyCode == LEFT)
+      cp5.getController("bounce").setImages(bt_images_offhover[2]);  
+    else if (keyCode == RIGHT)
       cp5.getController("pass").setImages(bt_images_offhover[3]);
-    }
-      
   }
   
+}
+
+// obtain values from the radio button (sound change)
+void controlEvent(ControlEvent theEvent) {
+  if(theEvent.isGroup() && theEvent.getName().equals("radio_button")) {
+    // sound == original 
+    if (theEvent.getArrayValue()[0] == 1)
+      audio_file_index = 0;
+    // sound == whoosh
+    else
+      audio_file_index = 1;
+  }
 }

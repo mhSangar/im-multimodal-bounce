@@ -1,0 +1,15 @@
+#audio_player {
+	display: flex;
+	justify-content: space-around;	 
+}
+
+#audio_player div {
+	display: flex;
+	flex-direction: column;
+}
+
+#audio_player div p {
+	text-align: center;
+	margin: 5px 0;
+}
+
