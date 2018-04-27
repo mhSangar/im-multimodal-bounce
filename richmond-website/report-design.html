@@ -142,7 +142,7 @@
     </img>
 
     <p>
-      The Play/Pause button is placed in the centre, taking the usual structure of a music or video player. The Result Input buttons, located on the sides, have attached a label that indicates their function. The latency is controlled with a slider, located just below these buttons. It will have a total of three values, being the latency zero (i.e. sound when dots collide) the default.  
+      The Play/Pause button is placed in the centre, taking the usual structure of a music or video player. The Result Input buttons, located on the sides, have attached a label that indicates their function. The latency is controlled with a slider, located just below these buttons. It will have a total of three values, being the latency zero (i.e. sound played when dots collide) the default.  
     </p>
     
     <p>
@@ -154,8 +154,33 @@
     </p>
 
     <p>
-      The library provide the functionality of the controls, but the deafault layout is very basic. In order to create different buttons, we load an image (all downloaded from <a href="https://www.flaticon.com/">Flaticon</a>) in the moment we create them.  
+      The library provide the functionality of the controls, but the default layout is very basic. To improve it we have used icons and images downloaded from <a href="https://www.flaticon.com/">Flaticon</a>, loading them when the buttons are created. These buttons, however, do not have any on hover properties that alert the user that they are actually buttons. In order to create this "on hover", we load the same button image, but with a lighter background.
     </p>
+
+    <p>
+      The function <span class="mh-text-itallic">hover_toggle_buttons()</span> is in charge of this feature. Every iteration of the <span class="mh-text-itallic">draw</span> loop it checks the property <span class="mh-text-itallic">isMouseOver</span> of all the buttons. If it has the mouse over on the current iteration, it loads the "light" image; while if it had the mouse over in the previous iteration, it loads the "dark" image again.
+    </p>
+
+    <img id="hover-buttons" class="mh-image" src="imgs/onhover_buttons.png" alt="Code to apply onhover to buttons">
+      <span class="mh-caption w3-medium">Code used to apply on hover features to the buttons</span>
+    </img>
+
+    <p>
+      Besides when the mouse is over them, the buttons that report the perception of the experiment also change to a lighter color when the related keys (&larr; and &rarr;) are pressed. The functions <span class="mh-text-itallic">keyPressed</span>, to change to the light color, and <span class="mh-text-itallic">keyReleased</span>, to change back to the usual color, were used to perform this feature.
+    </p>
+
+    <p>
+      In the case of the Play/Pause and the Sound on/off, the widget ToogleButton was used instead of the usual buttons, as they must keep the state after the user release the mouse click. The second state of the buttons (i.e. pause and sound off) is identified with different icons. They are automatically loaded by the library because when we created the buttons, we passed both "state" images to the method.
+    </p>
+    
+    <p>
+      As said before, to change the sound we finally used Radio Buttons, which only allow to activate one of the options at the same time. However, unlike the rest of buttons, they do not change the value of the associated variable when the user change the state of the button. Instead, we need to use an event listener function <span class="mh-text-itallic">controlEvent</span>, which is called only when the state of the button changes, and get the current value of the radio button to update the variable that controls which sound is played.
+    </p>
+
+    <p>
+      Applying all this changes, the final version of the GUI is as follows:
+    </p>
+
 
     <img id="final-gui-design" class="mh-image" src="imgs/gui_design.png" alt="Final design of the GUI">
       <span class="mh-caption w3-medium">Final design of the GUI</span>
@@ -165,66 +190,6 @@
   </div>
 </div>
 
-    <!-- cites -->
-    <!--
-    <div class="w3-panel w3-leftbar w3-light-grey">
-      <p><i>"Use products from nature for what it's worth - but never too early, nor too late." Fresh is the new sweet.</i></p>
-      <p>Chef, Coffeeist and Owner: Liam Brown</p>
-    </div>
-	-->
-
-<!-- Menu Container -->
-<!--
-<div class="w3-container" id="menu">
-  <div class="w3-content mh-text-block">
- 
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
-  
-    <div class="w3-row w3-center w3-card w3-padding">
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
-        <div class="w3-col s6 tablink">Eat</div>
-      </a>
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
-        <div class="w3-col s6 tablink">Drink</div>
-      </a>
-    </div>
-
-    <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
-      <h5>Bread Basket</h5>
-      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
-    
-      <h5>Honey Almond Granola with Fruits</h5>
-      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
-    
-      <h5>Belgian Waffle</h5>
-      <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
-    
-      <h5>Scrambled eggs</h5>
-      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
-    
-      <h5>Blueberry Pancakes</h5>
-      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
-    </div>
-
-    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
-      <h5>Coffee</h5>
-      <p class="w3-text-grey">Regular coffee 2.50</p><br>
-    
-      <h5>Chocolato</h5>
-      <p class="w3-text-grey">Chocolate espresso with milk 4.50</p><br>
-    
-      <h5>Corretto</h5>
-      <p class="w3-text-grey">Whiskey and coffee 5.00</p><br>
-    
-      <h5>Iced tea</h5>
-      <p class="w3-text-grey">Hot tea, except not hot 3.00</p><br>
-    
-      <h5>Soda</h5>
-      <p class="w3-text-grey">Coke, Sprite, Fanta, etc. 2.50</p>
-    </div>
-  </div>
-</div>
--->
 
 <!-- End page content -->
 </div>

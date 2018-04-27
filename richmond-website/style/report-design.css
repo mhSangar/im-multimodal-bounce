@@ -4,6 +4,12 @@
 	min-width: 450px;
 }
 
+#hover-buttons {
+	width: 65%;
+	max-width: 700px;
+	min-width: 450px;
+}
+
 #mockup-gui {
 	width: 70%;
 	max-width: 800px;
