@@ -115,7 +115,7 @@ void setup()
     cp5.addButton("bounce")
        .setPosition(220,440)
        .setSize(50,50)
-       .setImages(loadImage("left-arrow_offhover.png"), loadImage("left-arrow_onhover.png"), loadImage("left-arrow_onhover.png"))
+       .setImages(bt_images_offhover[2])
        ;
     labels[1] = new Textlabel (cp5, "BOUNCE DETECTED", 275, 462);
     

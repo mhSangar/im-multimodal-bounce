@@ -7,10 +7,26 @@ body, html {
 .mh-caption {
 	display: flex;
 	text-align: center;
+	font-style: italic;
 	justify-content: center;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 40px;
+}
+
+.mh-real-list{
+	list-style: initial !important;
+	padding-left: 40px !important;
+	margin-top: 18px !important;
+	margin-bottom: 18px !important;
+}
+
+.mh-text-bold{
+	font-weight: bold;
+}
+
+.mh-text-itallic{
+	font-style: italic;
 }
 
 .bgimg {
@@ -19,6 +35,10 @@ body, html {
     background-image: url("../imgs/main-image.jpg");
     height: 75%;
     min-height: 400px;
+}
+
+.mh-bg-color{
+	background-color: #f7f5f1 !important;
 }
 
 .menu {
@@ -60,7 +80,7 @@ body, html {
 	margin: auto;
 	margin-bottom: 10px;
 	border-radius: 50%;
-	filter:grayscale(30%);
+	filter:grayscale(40%);
 }
 
 #top-image:hover{
@@ -73,7 +93,16 @@ body, html {
 	font-weight: bold;
 }
 
-.mh-img {
+.mh-image {
+	filter:grayscale(0%);
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	margin-bottom: 20px;
+}
+
+.download-links {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -81,12 +110,12 @@ body, html {
 	padding-right: 13%;
 }
 
-.mh-img a{
+.download-links a{
 	margin: 8px;
 	text-decoration: none;
 }
 
-.mh-img a:hover{
+.download-links a:hover{
 	transition: .1s;
 	text-decoration: underline;
 }
@@ -94,6 +123,12 @@ body, html {
 .mh-button{
 	transition: .2s;
 
+}
+
+@media all and (max-width:700px){
+	.mh-navbar {
+	    position: absolute;
+	}
 }
 
 .mh-min-width{

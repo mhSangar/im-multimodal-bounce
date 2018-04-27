@@ -1,6 +1,8 @@
 #audio_player {
 	display: flex;
 	justify-content: space-around;	 
+	padding-top: 20px;
+	padding-bottom: 10px;
 }
 
 #audio_player div {
@@ -8,8 +10,16 @@
 	flex-direction: column;
 }
 
-#audio_player div p {
+#audio_player div span {
 	text-align: center;
-	margin: 5px 0;
+	margin-top: 10px;
+	margin-bottom: 0;
 }
+
+#bounce-expl {
+	width: 69%;
+	max-width: 800px;
+	min-width: 450px;
+}
+
 

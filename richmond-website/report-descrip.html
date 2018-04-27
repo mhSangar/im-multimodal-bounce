@@ -38,7 +38,7 @@
 </header>
 
 <!-- Add a background color and large text to the whole page -->
-<div id="mh-text-body" class="w3-sand w3-grayscale w3-large">
+<div id="mh-text-body" class="w3-sand mh-bg-color w3-large">
 
 <!-- About Container -->
 <div class="w3-container" id="descr">
@@ -50,7 +50,7 @@
     </p>
     
     <p>
-      In the present assignment we show how the kind of the sound played in the moment the targets collide affects the bounce-induction effect, changing it from the original "crack" sound to a "whoosh" sound. As the nature of this "whoosh" is not related to a collission, so playing it at the same moment that the "crack" sound may not be convenient to test the full potential of this factor. It is because of this reason that a further research has been done about the timing in which it is played.
+      In the present assignment we show how the kind of sound played when the targets collide affects the bounce-induction effect, changing this sound from the original "crack" to a "whoosh" (See the audio examples below). As the nature of this "whoosh" is not related to a collision, playing it at the exact moment when the dots collide may not be convenient to test the full potential of this factor. Because of this, a further research has been done about the timing in which the new sound is played.
     </p>
 
     <div id="audio_player">
@@ -60,7 +60,7 @@
           Your browser does not support the audio element.
         </audio>   
         <br>
-        <p>Original sound</p>
+        <span class="mh-caption w3-medium">Original sound</span>
       </div>
       
       <div>
@@ -69,16 +69,16 @@
           Your browser does not support the audio element.
         </audio>   
         <br>
-        <p>Whoosh sound</p>
+        <span class="mh-caption w3-medium">Whoosh sound</span>
       </div>      
     </div>
 
-    <p>In order to have a wide set of data to analyse, a total of 4 experiments have been realised: </p>
+    <p>A total of 4 experiments have been realised in order to see the repercussions of the new sound: </p>
     <ol>
-      <li> The original experiment with the "crack" sound, but using the same graphical interface designed for the other three experiments. </li>
-      <li> Same conditions as the original, but changing the collission sound for a "whoosh". </li>
-      <li> Same conditions as the second experiment, but the sound is played 200ms before the collission. </li>
-      <li> Same conditions as the second experiment, but the sound is played 200ms after the collission. </li>
+      <li> The original experiment with the "crack" sound, but using in this case the same graphical interface as the other three experiments. </li>
+      <li> Same conditions as the first experiment, but changing the collision sound for a "whoosh". </li>
+      <li> Same conditions as the second experiment, but the sound is played 200ms before the collision. </li>
+      <li> Same conditions as the second experiment, but the sound is played 200ms after the collision. </li>
     </ol>
     
     <h5 class="w3-padding-32"><span class="w3-tag w3-wide">1.1 Method </span></h5>
@@ -88,13 +88,24 @@
     </p>
 
     <p>
-      Visual stimuli was displayed on the screen (60Hz) of a Toshiba laptop model C50-A-1GU (complete specifications in <a href="files/laptop_specs.txt" target="_blank">here</a>) in a room with the light off. The audio stimuli was composed of the two sounds described previously (i.e. "crack" and "whoosh") and the integrated speakers of the laptop were used to play both sounds. A full report of the design of the graphical interface used in the experiments can be found in the section <a href="report-design.html">2. DESIGN</a> of this website.
+      Visual stimuli was displayed on the screen (60Hz) of a Toshiba laptop model C50-A-1GU (complete specifications in <a href="files/laptop_specs.txt" target="_blank">here</a>) in a room with the light off. The audio stimuli was composed of the two sounds described previously (i.e. "crack" and "whoosh") and the integrated speakers of the laptop were used to play both sounds. A full report of the design of the graphical interface (GUI) used in the experiments can be found in the section <a href="report-design.html">2. DESIGN</a> of this website.
+    </p>
+   
+    <p>
+     Besides the controls that compose the GUI, the visual stimuli, displayed on the screen at 100fps, was composed of two white disks of 20 pixels (called "dots" onwards), both placed in the exact centre of the screen at the start of the experiment. Immediately after the onset, one dot starts moving horizontally in a straight line towards the east side of the window, while the other dot does the same towards the west side. The speed of both dots is the same, 5 pixels per frame, and it will be constant during the whole experiment. 
+    </p>
+
+    <img id="bounce-expl" class="mh-image" src="imgs/bounce_explanation.png" alt="Trajectory of the dots">
+      <span class="mh-caption w3-medium">Trajectory of the dots across the screen</span>
+    </img>  
+
+    <p>
+     Once the dots have reached the border of the window, they will "bounce" on this edge, changing their direction 180 degrees. Moving now towards each other, they will go back to their initial position when they collide in the centre of the screen.
     </p>
 
     <p>
-      Observers viewed the display from an aproximate distance of 1 meter and reported their perception (i.e. streaming or bouncing) by using the mouse to press the buttons showed on the screen or by pressing the keys &larr; or &rarr; of the keyboard. 
+     Observers viewed the display from an approximate distance of 1 meter and reported their perception (i.e. streaming or bouncing) either by using the mouse to press the buttons that are shown on the screen or by pressing the keys &larr; or &rarr; of the keyboard, which have the same effect. 
     </p>
-   
     
   </div>
 </div>
