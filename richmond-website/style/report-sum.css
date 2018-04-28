@@ -1,0 +1,14 @@
+#all-res{
+	width: 45%;
+	border-radius: 15px;
+	border-width: 2px;
+	border-style: dotted;	
+	max-width: 700px;
+	min-width: 450px;
+}
+
+#final-gui-design {
+	width: 69%;
+	max-width: 800px;
+	min-width: 450px;
+}

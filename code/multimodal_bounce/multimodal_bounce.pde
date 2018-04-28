@@ -51,7 +51,7 @@ int round = 0; // number of times the dots have crossed screen
 int prev_round = -1;
 ControlP5 cp5; // handler of cp5 sliders and button
 Textlabel sound_label;
-Textlabel[] labels = new Textlabel[3];
+Textlabel[] labels = new Textlabel[4];
 boolean stop_animation = false; // stop or stop the animation
 boolean bounce;  // bounce detected
 boolean pass;    // pass/stream detected
@@ -134,7 +134,9 @@ void setup()
       .addItem("Original sound", 0)
       .addItem("Whoosh sound", 1)
       .activate(0);
-
+      
+    labels[3] = new Textlabel (cp5, "0", 5, 5);  
+    
   // instantiate dots
   d1 = new dot(); 
     d1.init(1);
@@ -160,8 +162,10 @@ void draw()
 { 
   background(0); // clear screen to black
   
-  for (int i = 0; i < labels.length; i++)
+  for (int i = 0; i < labels.length; i++){
+    labels[3] = new Textlabel (cp5, new Integer(round).toString(), 5, 5);
     labels[i].draw(this);
+  }
   
   if (sound_prev != audio_file_index){
     click_sound = minim.loadFile(audio_files[audio_file_index]); // read in a sound file
@@ -363,7 +367,7 @@ void keyReleased(){
 void controlEvent(ControlEvent theEvent) {
   if(theEvent.isGroup() && theEvent.getName().equals("radio_button")) {
     // sound == original 
-    if (theEvent.getArrayValue()[0] == 1)
+    if (theEvent.getArrayValue()[0] == 1)    
       audio_file_index = 0;
     // sound == whoosh
     else

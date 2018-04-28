@@ -16,12 +16,40 @@
 	
 	<!-- CSS style file -->
 	<link rel="stylesheet" href="style/main.css">
+  <link rel="stylesheet" href="style/report-sum.css">
 
 </head>
 <body class="mh-min-width">
 
 <!-- Links (sit on top) -->
-<div id="mh-top-bar"></div>
+<div class="w3-top mh-min-width mh-navbar">
+  <div class="w3-row mh-min-width">
+    <ul>
+      <li class="mh-menu-level-1 w3-black w3-padding">
+        <a href="index.html" class="w3-button w3-block w3-black mh-button">HOME</a>
+      </li>
+      
+      <li class="mh-menu-level-1 w3-black w3-padding">
+        <a href="report-descrip.html" class="w3-button w3-block w3-black mh-button">REPORT</a> 
+        <ul>
+          <li class="mh-menu-level-2"> <a href="report-descrip.html" class="w3-button w3-block w3-black">DESCRIPTION</a>  </li>
+          <li class="mh-menu-level-2"> <a href="report-design.html" class="w3-button w3-block w3-black">DESIGN</a>  </li>
+          <li class="mh-menu-level-2"> <a href="report-eval.html" class="w3-button w3-block w3-black">EVALUATION</a>  </li>
+          <li class="mh-menu-level-2"> <a href="report-sum.html" class="w3-button w3-block w3-black">SUMMARY</a>  </li>
+        </ul>
+      </li>
+      
+      <li class="mh-menu-level-1 w3-black w3-padding">
+        <a href="#" class="w3-button w3-block w3-black mh-button">DOWNLOADS</a> 
+        <ul>
+          <li class="mh-menu-level-2"> <a href="files/17150868-all_files.zip" class="w3-button w3-block w3-black" download>ALL FILES</a>  </li>
+          <li class="mh-menu-level-2"> <a href="files/17150868-source.zip" class="w3-button w3-block w3-black" download>SOURCE CODE</a>  </li>
+          <li class="mh-menu-level-2"> <a href="files/17150868-report.pdf" class="w3-button w3-block w3-black" download>REPORT IN PDF</a>  </li>
+        </ul>
+      </li>
+     </ul>
+  </div>
+</div>
 
 <!-- Header with image -->
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
@@ -44,8 +72,41 @@
 <div class="w3-container" id="sum">
   <div class="w3-content mh-text-block">
     <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">4. SUMMARY</span></h5>
-    <p>The Cafe was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <p>In addition to our full espresso and brew bar menu, we serve fresh made-to-order breakfast and lunch sandwiches, as well as a selection of sides and salads and other good stuff.</p>
+    <p>
+      The objective of this assignment is to replicate the experiments from Watanabe's paper (Watanabe et al. (2001)) in order to document how including a new factor could affect the results. The approach chosen was to change the nature of the sound played (from a "crack" to a "whoosh") when the dots coincide in the same point and see how the timing of when this sound is played could alter the bounce-induction effect. 
+    </p>
+
+    <p>
+      The experiments are displayed in a GUI designed by the student, similar to the used in the original paper, using the library ControlP5 for the language Processing.
+    </p>
+
+    <img id="final-gui-design" class="mh-image" src="imgs/gui_design.png" alt="Final design of the GUI">
+      <span class="mh-caption w3-medium">Final design of the GUI</span>
+    </img>
+
+    <p>
+      A total of 4 experiments were performed to test our thesis: the original experiment with the "crack" sound, the same experiment now using the "whoosh" sound, and another two experiments with the same sound, but playing it 200ms before and after the "colission", respectively. The results of these experiments are summarized in the following bar chart, where the vertical red lines indicate the maximum values registered. 
+    </p>
+
+    <img id="all-res" class="mh-image" src="imgs/res-all-exp.png" alt="Results of all experiments">
+      <span class="mh-caption w3-medium">Results of all experiments</span>
+    </img>
+
+    <p>
+      The results of the first experiment are consistent with Watanabe et al. (2001), showing that the GUI does not affect the results. The next three experiments prove our thesis, that is, changing the nature of the sound does affect the results, causing an attenuation of the bounce induction effect (Experiment 2). Playing the sound before the "collision" attenuates even more the effect (Experiment 3, omitting extreme value of the observer 3), while playing it after makes the attenuation less effective (Experiment 4). 
+    </p>
+
+    
+  </div>
+</div>
+
+<div class="w3-container">
+  <div class="w3-content mh-text-block">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">REFERENCES</span></h5>
+    <ul style="list-style: initial;">
+      <li style="list-style: initial;">Watanabe, K. and Shimojo, S. (2001). When Sound Affects Vision: Effects of Auditory Grouping on Visual Motion Perception. Psychological Science, 12(2), pp.109-116. Read it <a href="files/Watanabe2001.pdf" target="_blank">here</a>.</li>
+    </ul>
+
     
   </div>
 </div>
