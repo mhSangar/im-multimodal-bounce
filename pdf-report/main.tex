@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt,fleqn]{article}
+
+%
+% PACKAGES %
+%
+\usepackage[utf8]{inputenc}
+\usepackage[export]{adjustbox} % loads also graphicx
+\usepackage{epsf}
+\usepackage{natbib}	% harvard ref 
+\usepackage[font={small,it}, justification=centering]{caption}
+\usepackage{hyperref}	% linked references 
+
+
+%\usepackage{thesis}
+
+%
+% PATH CONFIGURATION %
+%
+\graphicspath{ {imgs/} }
+\def \sectionspath {./sections}
+
+%
+% TITLE
+%
+\title{
+	{Multimodal Bounce}\\
+	\vspace{1.5cm}
+	{\large University of Limerick}\\
+	{\includegraphics[max width=126mm]{ul_logo.jpg}}
+	\vspace{2.5cm}
+}
+\author{
+	\textbf{Erasmus Student:} Mario Sánchez García\\
+	ID: 17150868\\
+	\\
+	CS4358 - Interactive Multimedia
+}
+\date{April 28, 2018}
+
+
+%
+% FORMAT %
+%
+\linespread{1.3}    
+
+\setlength{\textheight}{8.5in}
+%\setlength{\oddsidemargin}{0.7in}
+%\setlength{\evensidemargin}{0.7in}
+\setlength{\textwidth}{5.50in}
+\setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+%\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex} % spacing between paragraphs
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\pagestyle{plain}
+\pagenumbering{gobble}
+
+\maketitle
+\vfill
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{2}
+
+%
+% Table of Contents
+%
+\tableofcontents
+
+\include{\sectionspath/introduction}
+\include{\sectionspath/description}
+\include{\sectionspath/design}
+\include{\sectionspath/evaluation}
+\include{\sectionspath/summary}
+
+\bibliographystyle{agsm}
+\bibliography{ref}
+
+\end{document}   
